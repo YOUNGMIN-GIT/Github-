@@ -1,6 +1,188 @@
+/* COMMON */
 .body__container {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 400;
     color: #333;
+}
+a {
+    text-decoration: none;
+    /* a 태그 설정 시 택스트 하단의 밑줄 제거 */
+}
+
+/* BUTTON */
+.btn {
+    height: 34px;
+    background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
+    border: 1px solid #d5d5d5;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+    color: #333;
+}
+
+.btn:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.07);
+}
+
+.btn.btn--primary {
+    border: 1px solid #65b836;
+    color: #fff;
+    background: #55a532 linear-gradient(#91dd70, #55ae2e);
+}
+
+
+/* INPUT TEXT */
+.input--text {
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    /* outline 택스트 박스 클릭시 생기는 테두리 하이라이트 제어 */
+    /* box-shadow: (내부에 생기도록) x축 y축 블러 색상 */
+}
+
+.input--text:focus {
+    border-color: #51a7e8;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075),
+        0 0 5px rbba(81, 167, 232, 0.5)
+        /* focus 시 box-shadow를 하나만 설정하면 먼저 설정되어 있는 box-shadow가 사라지는데 
+  이를 쉼표로 연결해서 작성해 놓으면 사라지지 않고 두 개의 box-shadow가 설정됨 */
+}
+
+/* Vendor Prefix (브라우저 업체별 접두사) 브라우저가 제공하는 시험적 기능을 사용하는 접두사
+    크롬 : webkit
+    인터넷 익스플로어, 엣지: ms
+    파이어폭스: moz
+    오페라: o */
+.input--text::-webkit-input-placeholder {color: #cacaca;}
+.input--text::-ms-input-placeholder {color: #cacaca;}
+.input--text::-moz-input-placeholder {color: #cacaca;}
+
+
+/* FLOAT CLEARFIX */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+.float--left {
+    float: left;
+}
+.float--right {
+    float: right;
+}
+/* 컨테이너가 자식들을 감싸지 못하는 것을 수정하기 위한 clearfix
+요소들을 float으로 부유 시킨 후 clearfix로 덮음 */
+
+
+/* HEADER */
+header {
+    border-bottom: 1px solid rgba(0, 0, 0, .75);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .75);
+    background: #fff;
+}
+
+header .inner {
+    max-width: 980px;
+    height: 78px;
+    margin: 0 auto;
+    /* 컨텐츠 가로 중앙 정렬 방법: width를 설정한 다음 margin을 auto로 맞추면 해당 넓이로
+    중앙 정렬됨 */
+}
+header .menu-group {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    /* menu-group의 높이 중앙 정렬 컨텐츠들을 flex 상태로 가로로 정렬 후,
+    align-items로 높이 중앙 정렬함 이때, 높이 값이 설정되어야 해당 높이의 중앙에 정렬
+    되기 때문에 높이 값이 필요함 이 경우 heigth: 100%로 부모의 높이 값을 100%사용함. */
+}
+header .logo {
+    margin-right: 10px;
+}
+header .logo a {
+    background: url("../img/logo.svg");
+    width: 32px;
+    height: 32px;
+    display: block;
+    text-indent: -9999px;
+    /* a 태그는 inline 요소로 width, height을 가질 수 없기 때문에 block요소로 만듦 */
+    /* css의 background로 이미지를 삽입할 때, html에 Github라는 글자가 남게되는데
+    구조적으로 이 로고 이미지가 무엇인지 남기기 위해 삭제하는 대신 text-indent(들여쓰기)
+    속성을 -9999의 값으로 넣어 화면에서만 사라지게 만든다. */
+}
+header .logo a:hover {
+    background: url("../img/logo_on.svg");
+}
+header .main-menu {
+    display: flex;
+}
+header .main-menu li a {
+    display: block;
+    padding: 10px;
+    color: #3c4146;
+    /* UI를 고려할 때, 클릭할 수 있는 글자 범위가 작기 때문에 padding의 영역까지 
+    클릭이 가능하도록 고려하는 코딩, a 태그의 padding을 줘서 10px까지 클릭이 가능함.
+    이때, a 태그는 inline 요소로 padding의 영향을 받지 않으므로 block으로 설정함.  */
+}
+header .main-menu li a:hover {
+    color: #4078c0;
+}
+header .sign-group {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+header .btn-group {
+    order: 2;
+    display: flex;
+    /* btn 코드에 display: inline-flex로 설정되어 있는데 inline요소로 설정된 버튼 2개가
+    HTML에서 줄바꿈되면서 이를 inline-flex가 띄어쓰기로 처리함. 의도치 않은 띄어쓰기를
+    display: flex로 제거함.  */
+}
+header .btn-group .sign-in {
+    margin-right: 4px;
+}
+#search-form {
+    order: 1;
+    margin-right: 12px;
+}
+#search {
+    width: 160px;
+    font-size: 14px;
+}
+#search + [type="submit"] {
+    display: none;
+    /* 아이디 search의 +(형제선택자) 중 [](속성선택자)가 type="submit"인 버튼을
+    display: none으로 보이지 않게 만드는 코딩 */
+}
+header .sub-menu {
+    display: flex;
+    margin-right: 10px;
+}
+header .sub-menu li a {
+    display: block;
+    padding: 8px;
+    font-size: 13px;
+    color: #3c4146;
+}
+header .sub-menu li a:hover {
+    color: #4078c0;
 }
