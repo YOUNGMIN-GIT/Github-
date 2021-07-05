@@ -360,9 +360,6 @@ header .sub-menu li a:hover {
 
 
 /* WHERE IS */
-.section--where-is {
-
-}
 .section--where-is .inner {
     padding: 80px;
 }
@@ -374,4 +371,42 @@ header .sub-menu li a:hover {
     border-bottom: none;
     box-shadow: 0 0 20px rgba(0, 0, 0, .2);
     box-sizing: border-box;
+}
+
+
+/* FOOTER */
+footer {
+
+}
+footer .inner {
+    padding: 50px 0;
+    border-top: 1px solid #eee;
+}
+footer .site-links {
+    display: flex;
+}
+footer .site-links li {
+    font-size: 12px;
+    margin-right: 10px;
+    color: #767676;
+}
+footer .site-links li a {
+    color: #4078c0;
+}
+footer .site-links li a:hover {
+    text-decoration: underline;
+}
+footer .logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 24px;
+    height: 24px;
+    /* position:relative안에 정중앙에 위치시키는 코드 */
+}
+footer .logo:hover svg {
+    fill: #4078c0;
 }
