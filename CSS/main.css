@@ -92,6 +92,44 @@ a {
 요소들을 float으로 부유 시킨 후 clearfix로 덮음 */
 
 
+/* SUMMARY */
+.summary {
+
+}
+.summary__title {
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 18px;
+}
+.summary__description {
+    font-size: 26px;
+    font-weight: 300;
+    color: #767676;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+
+/* SECTION & INNER */
+.section {
+    position: relative;
+    /* inner 내부에서 position: absolute가 사용되면 부모 요소에 position이 설정되어야 하는데
+    이것이 부모 요소를 타고 올라가다 inner에서는 멈추게 하기 위해 position: relative를 설정 */
+}
+.section .inner {
+    max-width: 980px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+    /* 컨텐츠 가로 중앙 정렬 방법: width를 설정한 다음 margin을 auto로 맞추면 해당 넓이로
+    중앙 정렬됨 */
+    /* padding속성이 들어갔을때 요소가 커지는 것을 방지하기 위해 border-box로 설정 */
+    /* inner 내부에서 position: absolute가 사용되면 부모 요소에 position이 설정되어야 하는데
+    이것이 부모 요소를 타고 올라가다 inner에서는 멈추게 하기 위해 position: relative를 설정 */
+}
+
+
 /* HEADER */
 header {
     border-bottom: 1px solid rgba(0, 0, 0, .75);
@@ -100,11 +138,8 @@ header {
 }
 
 header .inner {
-    max-width: 980px;
     height: 78px;
-    margin: 0 auto;
-    /* 컨텐츠 가로 중앙 정렬 방법: width를 설정한 다음 margin을 auto로 맞추면 해당 넓이로
-    중앙 정렬됨 */
+
 }
 header .menu-group {
     display: flex;
@@ -185,4 +220,77 @@ header .sub-menu li a {
 }
 header .sub-menu li a:hover {
     color: #4078c0;
+}
+
+
+/* VISUAL */
+.section--visual {
+    background: url(../img/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: cover;
+    /* 이미지가 정해진 크기를 넘어서면 잘리게 되는데 크기에 맞춰 늘어나게 하려면
+    background-size를 cover로 설정하면 된다. */
+}
+.section--visual::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background:rgba(0, 0, 0, .3)
+    /* visual영역의 이미지 앞에 투명하고 어두운 막을 설치해 이미지가 조금 어둡게 보이게 함. */
+}
+.section--visual .inner {
+    padding: 160px 0;
+    display: flex;
+}
+.section--visual .summary {
+    flex: 1;
+    margin-right: 90px;
+    flex:1의 값을 넣어야 summary칸의 넓이에 맞춰 택스트가 보여짐
+}
+.section--visual .summary__title {
+    color: #fff;
+    font-size: 54px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+                 0 1px 25px rgba(0, 0, 0, .75)
+    /* 텍스트에 블러 같은 효과를 주기 위해 쉼표로 여러 개의 택스트 쉐도우를 줄 수 있다. */
+}
+.section--visual .summary__description {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+                 0 1px 25px rgba(0, 0, 0, .75)
+}
+#sign-form {
+    width: 340px;
+    margin-top: 10px;
+}
+#sign-form li {
+    margin-bottom: 17px;
+}
+#sign-form li:last-child {
+    margin-bottom: 0px;
+}
+#sign-form .input--text {
+    width: 100%;
+    height: 40px;
+}
+#sign-form .caption {
+    font-size: 12px;
+    margin-top: 5px;
+    color: rgba(255,255,255,.6);
+    line-height: 1.5;
+    text-align: center;
+}
+#sign-form [type="submit"] {
+    width: 100%;
+    height: 62px;
+    padding: 0 25px;
+    font-size: 20px;
+    justify-content: center;
+    /* text-align:center로 문자가 가운데 정렬되지 않는데, submit버튼의 button은
+    btn의 적용을 받는데, btn이 display:inline-flex이기 때문에 justify-content로
+    가운데 정렬해야함. */
 }
